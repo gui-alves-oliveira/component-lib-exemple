@@ -13,8 +13,6 @@ A modern React Design System built on top of **Base UI**, providing a consistent
 * 🧩 Atomic components
 * 🏗️ Composed UI blocks
 
----
-
 # Philosophy
 
 This Design System is built around a few core principles.
@@ -50,7 +48,25 @@ Instead of creating a single component with dozens of props to cover every possi
 
 Composition keeps components predictable, reusable and easy to extend without increasing API complexity.
 
----
+### Avoid prop-driven UI patterns
+
+Prefer composition instead of boolean or “feature” props that modify rendering behavior.
+
+**Do not do:**
+
+```tsx
+<Button useChevron>My Button</Button>
+```
+
+**Do:**
+
+```tsx
+<Button>
+  My Button <Icon name="chevron" variant="button" />
+</Button>
+```
+
+This keeps components flexible and avoids turning them into rigid, configuration-heavy abstractions.
 
 ## Build, Don't Inherit
 
@@ -60,7 +76,6 @@ For example, a `Navbar` is built using components such as `Button`, `Popover`, `
 
 This approach promotes consistency and reduces duplication across the Design System.
 
----
 
 ## Tokens as the Source of Truth
 
@@ -70,7 +85,6 @@ Colors, spacing, typography, radii, shadows and motion values should never be ha
 
 Tokens are shared by both the Design System and consuming applications, ensuring a consistent visual language across the entire ecosystem.
 
----
 
 ## Accessibility by Default
 
@@ -78,7 +92,6 @@ Accessibility and interaction behavior are provided by Base UI.
 
 The Design System focuses on visual language, theming and developer experience while relying on Base UI for robust accessibility primitives.
 
----
 
 ## Consistent APIs
 
@@ -86,7 +99,6 @@ Components should expose clear, predictable APIs that closely follow Base UI's c
 
 Whenever possible, familiar patterns should be preserved to reduce the learning curve and make components intuitive to use.
 
----
 
 ## Reusability over Business Logic
 
@@ -94,7 +106,6 @@ Components and blocks should remain generic and reusable.
 
 Application-specific behavior, business rules and data fetching belong in the consuming application—not in the Design System.
 
----
 
 # Installation
 
@@ -108,7 +119,6 @@ or
 pnpm add @your-org/ui
 ```
 
----
 
 # Quick Start
 
@@ -145,8 +155,6 @@ export function Login() {
 }
 ```
 
----
-
 # Project Structure
 
 ```text
@@ -160,8 +168,6 @@ src/
 ├── utils/
 └── index.ts
 ```
-
----
 
 # Design Tokens
 
@@ -237,8 +243,6 @@ This enables:
 * Runtime customization
 * Consistent styling between library components and application-specific components
 
----
-
 # Components
 
 Components are wrappers around Base UI primitives.
@@ -266,8 +270,6 @@ Examples:
 
 Components should remain generic, reusable and free of application-specific business logic.
 
----
-
 # Blocks
 
 Blocks are higher-level UI compositions built using components.
@@ -277,15 +279,11 @@ Examples:
 * Navbar
 * Sidebar
 * AppShell
-* UserMenu
 * SearchBar
 * EmptyState
 * PageHeader
-* DataTableToolbar
 
 Blocks encapsulate common interface patterns while remaining reusable across projects.
-
----
 
 # Base UI
 
@@ -301,8 +299,6 @@ Instead, it focuses on:
 * Variants
 * Themes
 * Reusable UI patterns
-
----
 
 # Imports
 
@@ -332,8 +328,6 @@ Future versions may also support subpath imports for individual components.
 ```tsx
 import { Button } from "@your-org/ui/button";
 ```
-
----
 
 # Development
 
