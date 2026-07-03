@@ -1,0 +1,91 @@
+.base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: var(--typography-fontFamily-sans);
+    font-weight: var(--typography-fontWeight-medium);
+    line-height: var(--typography-lineHeight-normal);
+
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+
+    cursor: pointer;
+    user-select: none;
+
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        transform 0.05s ease;
+}
+
+.base:active {
+    transform: translateY(1px);
+}
+
+.primary {
+    background: var(--color-primary);
+    color: var(--color-primaryForeground);
+}
+
+.primary:hover {
+    background: var(--color-primaryHover);
+}
+
+.primary:focus-visible {
+    box-shadow: 0 0 0 3px
+        color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+
+.secondary {
+    background: var(--color-surface);
+    color: var(--color-text-default);
+    border-color: var(--color-border);
+}
+
+.secondary:hover {
+    background: var(--color-muted);
+}
+
+.secondary:focus-visible {
+    box-shadow: 0 0 0 3px
+        color-mix(in srgb, var(--color-gray-400) 30%, transparent);
+}
+
+.ghost {
+    background: transparent;
+    color: var(--color-text-muted);
+}
+
+.ghost:hover {
+    background: var(--color-gray-100);
+    color: var(--color-text-default);
+}
+
+.ghost:focus-visible {
+    box-shadow: 0 0 0 3px
+        color-mix(in srgb, var(--color-gray-500) 25%, transparent);
+}
+
+.sm {
+    height: 32px;
+    padding: 0 var(--spacing-sm);
+    font-size: var(--typography-fontSize-sm);
+}
+
+.md {
+    height: 40px;
+    padding: 0 var(--spacing-md);
+    font-size: var(--typography-fontSize-sm);
+}
+
+.lg {
+    height: 48px;
+    padding: 0 var(--spacing-lg);
+    font-size: var(--typography-fontSize-md);
+}
+
+.full {
+    width: 100%;
+}

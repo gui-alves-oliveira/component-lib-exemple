@@ -1,7 +1,9 @@
+import { SearchBar } from "./blocks/searchbar";
+
 function App() {
   return (
     <div>
-      <p>hello</p>
+      <SearchBar />
     </div>
   );
 }

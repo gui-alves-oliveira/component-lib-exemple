@@ -1,0 +1,22 @@
+.base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    color: inherit;
+}
+
+.sm svg {
+    width: 16px;
+    height: 16px;
+}
+
+.md svg {
+    width: 20px;
+    height: 20px;
+}
+
+.lg svg {
+    width: 24px;
+    height: 24px;
+}

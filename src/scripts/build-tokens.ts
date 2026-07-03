@@ -1,11 +1,21 @@
 import { writeFileSync, mkdirSync } from "fs";
 import path from "path";
-import { colors } from "../tokens/colors";
-import { spacing } from "../tokens/spacing";
+import {
+    colors,
+    radius,
+    shadows,
+    spacing,
+    typography,
+    zIndex,
+} from "../tokens";
 
 const tokens = {
     color: colors,
-    spacing,
+    spacing: spacing,
+    radius: radius,
+    shadow: shadows,
+    level: zIndex,
+    typography: typography,
 };
 
 export function generateCssVariables() {
@@ -41,7 +51,7 @@ function flattenTokens(
     return result;
 }
 
-function buildTokens() {
+export function buildTokens() {
     const css = generateCssVariables();
 
     const outDir = path.resolve("src/styles");
@@ -53,5 +63,3 @@ function buildTokens() {
 
     console.log("✅ Tokens generated at src/styles/tokens.css");
 }
-
-buildTokens();

@@ -1,0 +1,24 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    width: 100%;
+}
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.leadingIcon {
+    position: absolute;
+    left: var(--spacing-sm);
+    color: var(--color-text-muted);
+    pointer-events: none;
+}
+
+.inputWrapper input {
+    padding-left: 36px;
+}

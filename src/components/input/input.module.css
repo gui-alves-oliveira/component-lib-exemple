@@ -1,0 +1,124 @@
+.base {
+    display: inline-flex;
+    align-items: center;
+
+    width: auto;
+    min-width: 8rem;
+
+    font-family: var(--typography-fontFamily-sans);
+    font-size: var(--typography-fontSize-sm);
+    font-weight: var(--typography-fontWeight-regular);
+    line-height: var(--typography-lineHeight-normal);
+
+    color: var(--color-text-default);
+    background-color: transparent;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+
+    padding: 0 var(--spacing-sm);
+
+    outline: none;
+
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        color 0.15s ease;
+}
+
+.primary {
+    background-color: var(--color-primary);
+    color: var(--color-primaryForeground);
+    border-color: var(--color-primary);
+}
+
+.primary:hover {
+    background-color: var(--color-primaryHover);
+    border-color: var(--color-primaryHover);
+}
+
+.primary:focus-within {
+    box-shadow: 0 0 0 3px
+        color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+
+.secondary {
+    background-color: var(--color-surface);
+    color: var(--color-text-default);
+    border-color: var(--color-border);
+}
+
+.secondary:hover {
+    background-color: var(--color-muted);
+}
+
+.secondary:focus-within {
+    box-shadow: 0 0 0 3px
+        color-mix(in srgb, var(--color-gray-400) 30%, transparent);
+}
+
+.ghost {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--color-text-muted);
+}
+
+.ghost:hover {
+    background-color: var(--color-gray-100);
+    color: var(--color-text-default);
+}
+
+.ghost:focus-within {
+    box-shadow: 0 0 0 3px
+        color-mix(in srgb, var(--color-gray-500) 25%, transparent);
+}
+
+.sm {
+    height: 32px;
+    padding: 0 var(--spacing-xs);
+    font-size: var(--typography-fontSize-xs);
+    border-radius: var(--radius-sm);
+}
+
+.md {
+    height: 40px;
+    padding: 0 var(--spacing-sm);
+    font-size: var(--typography-fontSize-sm);
+    border-radius: var(--radius-md);
+}
+
+.lg {
+    height: 48px;
+    padding: 0 var(--spacing-md);
+    font-size: var(--typography-fontSize-md);
+    border-radius: var(--radius-lg);
+}
+
+.fill {
+    width: 100%;
+    flex: 1;
+}
+
+.content {
+    width: auto;
+    display: inline-flex;
+}
+
+.base:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--color-muted);
+}
+
+.base::placeholder {
+    color: var(--color-text-muted);
+}
+
+.base:focus-within {
+    outline: none;
+}
+
+.base:hover {
+    border-color: var(--color-gray-300);
+}
