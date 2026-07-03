@@ -29,7 +29,10 @@ const input = cva(styles.base, {
 export function Input({
   size,
   variant,
+  fill,
   ...props
 }: InputPrimitive.Props & VariantProps<typeof input>) {
-  return <InputPrimitive className={input({ size, variant })} {...props} />;
+  return (
+    <InputPrimitive className={input({ size, variant, fill })} {...props} />
+  );
 }

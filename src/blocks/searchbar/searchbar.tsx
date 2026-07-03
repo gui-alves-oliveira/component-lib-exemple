@@ -20,9 +20,7 @@ export function SearchBar({
   return (
     <div className={styles.wrapper}>
       <div className={styles.inputWrapper}>
-        <span className={styles.leadingIcon}>
-          <Icon icon={Search} size="sm" />
-        </span>
+        <Icon className={styles.leadingIcon} icon={Search} size="sm" />
 
         <Input
           fill
