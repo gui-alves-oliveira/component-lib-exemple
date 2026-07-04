@@ -1,9 +1,33 @@
-import "./icon.module.css";
+import { cva, type VariantProps } from "class-variance-authority";
+import styles from "./icon.module.css";
 
-export function Icon() {
+const icon = cva(styles.base, {
+  variants: {
+    size: {
+      sm: styles.sm,
+      md: styles.md,
+      lg: styles.lg,
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+});
+
+export type IconProps = React.HTMLAttributes<HTMLSpanElement> &
+  VariantProps<typeof icon> & {
+    icon: React.ElementType;
+  };
+
+export function Icon({
+  icon: LucideIcon,
+  size,
+  className,
+  ...props
+}: IconProps) {
   return (
-    <div>
-      <p>Icon component</p>
-    </div>
+    <span className={icon({ size, className })} {...props}>
+      <LucideIcon />
+    </span>
   );
 }

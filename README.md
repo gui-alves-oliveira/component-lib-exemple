@@ -125,6 +125,7 @@ pnpm add @your-org/ui
 Wrap your application with the `ThemeProvider`.
 
 ```tsx
+import "@your-org/ui/styles.css";
 import { ThemeProvider } from "@your-org/ui";
 
 export function App() {
@@ -145,7 +146,7 @@ export function Login() {
   return (
     <>
       <Input
-        label="Email"
+        type="email"
         placeholder="john@example.com"
       />
 
@@ -153,6 +154,14 @@ export function Login() {
     </>
   );
 }
+```
+
+Use focused subpath exports when you want narrower imports.
+
+```tsx
+import { Button } from "@your-org/ui/components/button";
+import { SearchBar } from "@your-org/ui/blocks/searchbar";
+import { colors, spacing } from "@your-org/ui/tokens";
 ```
 
 # Project Structure
