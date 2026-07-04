@@ -1,4 +1,9 @@
-export { colors } from "./colors";
+export {
+    colors,
+    colorPrimitives,
+    colorThemes,
+    type ColorThemeName,
+} from "./colors";
 export { spacing } from "./spacing";
 export { radius } from "./radius";
 export { shadows } from "./shadows";

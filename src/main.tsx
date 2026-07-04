@@ -6,9 +6,12 @@ import "./styles/tokens.css";
 import "./styles/globals.css";
 
 import App from "./App.tsx";
+import { ThemeProvider } from "./providers/theme-provider";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
   </StrictMode>,
 );

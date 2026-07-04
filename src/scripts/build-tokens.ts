@@ -1,7 +1,7 @@
 import { writeFileSync, mkdirSync } from "fs";
 import path from "path";
 import {
-    colors,
+    colorThemes,
     radius,
     shadows,
     spacing,
@@ -9,8 +9,12 @@ import {
     zIndex,
 } from "../tokens";
 
-const tokens = {
-    color: colors,
+type TokenValue = string | number;
+type TokenTree = {
+    [key: string]: TokenValue | TokenTree;
+};
+
+const globalTokens = {
     spacing: spacing,
     radius: radius,
     shadow: shadows,
@@ -19,29 +23,48 @@ const tokens = {
 };
 
 export function generateCssVariables() {
-    const flat = flattenTokens(tokens);
+    const globalCss = formatCssVariables(flattenTokens(globalTokens));
+    const lightCss = formatCssVariables(flattenTokens({ color: colorThemes.light }));
+    const darkCss = formatCssVariables(flattenTokens({ color: colorThemes.dark }));
 
-    const cssVariables = Object.entries(flat)
+    const css = [
+        ":root {",
+        globalCss,
+        lightCss,
+        "}",
+        "",
+        '[data-theme="light"] {',
+        lightCss,
+        "}",
+        "",
+        '[data-theme="dark"] {',
+        darkCss,
+        "}",
+    ].join("\n");
+
+    return `${css}\n`;
+}
+
+function formatCssVariables(tokens: Record<string, TokenValue>) {
+    return Object.entries(tokens)
         .map(([key, value]) => {
             const varName = `--${key}`;
             return `  ${varName}: ${value};`;
         })
         .join("\n");
-
-    return `:root {\n${cssVariables}\n}`;
 }
 
 function flattenTokens(
-    obj: Record<string, any>,
+    obj: TokenTree,
     prefix = "",
-): Record<string, string> {
-    const result: Record<string, string> = {};
+): Record<string, TokenValue> {
+    const result: Record<string, TokenValue> = {};
 
     for (const key in obj) {
         const value = obj[key];
         const nextKey = prefix ? `${prefix}-${key}` : key;
 
-        if (typeof value === "object") {
+        if (typeof value === "object" && value !== null) {
             Object.assign(result, flattenTokens(value, nextKey));
         } else {
             result[nextKey] = value;

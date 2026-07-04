@@ -7,8 +7,9 @@ export default defineConfig({
         react(),
         {
             name: "build-tokens",
-            buildStart() {
-                require("./src/scripts/build-tokens");
+            async buildStart() {
+                const { buildTokens } = await import("./src/scripts/build-tokens");
+                buildTokens();
             },
         },
     ],
