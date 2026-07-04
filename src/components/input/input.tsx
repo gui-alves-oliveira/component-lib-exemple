@@ -26,13 +26,20 @@ const input = cva(styles.base, {
   },
 });
 
+type InputProps = Omit<InputPrimitive.Props, "size"> &
+  VariantProps<typeof input>;
+
 export function Input({
   size,
   variant,
   fill,
+  className,
   ...props
-}: InputPrimitive.Props & VariantProps<typeof input>) {
+}: InputProps) {
   return (
-    <InputPrimitive className={input({ size, variant, fill })} {...props} />
+    <InputPrimitive
+      className={input({ size, variant, fill, className })}
+      {...props}
+    />
   );
 }
